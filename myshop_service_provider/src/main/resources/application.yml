@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql:///myshop?useSSL=false
+#    type: com.mchange.v2.c3p0.ComboPooledDataSource
+
+mybatis:
+  mapper-locations: classpath*:cn/otote/shop/dao/mapper/*.xml
+  type-aliases-package: cn.otote.shop.entity
+
+dubbo:
+  application:
+    name: myshop_service_provider
+  registry:
+    address: zookeeper://192.168.152.133:2181
+  protocol:
+    name: dubbo
+    port: 20880
