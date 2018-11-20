@@ -6,7 +6,10 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql:///myshop?useSSL=false
-#    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+  data:
+    solr:
+      host: http://192.168.152.133:8080/solr
 
 mybatis:
   mapper-locations: classpath*:cn/otote/shop/dao/mapper/*.xml

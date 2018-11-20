@@ -12,5 +12,7 @@ public interface IGoodsService {
 
     List<Goods> queryAll();
 
-    Integer addGoods(Goods goods);
+    Goods addGoods(Goods goods);
+
+    List<Goods> queryNewGoods();
 }

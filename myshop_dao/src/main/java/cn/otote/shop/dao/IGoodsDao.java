@@ -10,7 +10,10 @@ import java.util.List;
  */
 public interface IGoodsDao {
 
-    public List<Goods> queryAll();
+    List<Goods> queryAll();
 
     Integer addGoods(Goods goods);
+
+    List<Goods> queryNewGoods();
+
 }

@@ -2,15 +2,18 @@ spring:
   thymeleaf:
     mode: HTML5
     cache: false
-
+  servlet:
+    multipart:
+      max-file-size: 10MB
 dubbo:
   application:
     name: myshop_back
   registry:
     address: zookeeper://192.168.152.133:2181
+    timeout: 2000
 fdfs:
 #  连接超时时间
-  connect-timeout: 60
+  connect-timeout: 2000
   pool:
     jmx-enabled: false
 #    缩略图
@@ -19,6 +22,7 @@ fdfs:
     width: 200
 #    track服务配置地址列表
   tracker-list: 192.168.152.133:22122
+
 #  图片路径前缀
 image:
   path: http://192.168.152.133/

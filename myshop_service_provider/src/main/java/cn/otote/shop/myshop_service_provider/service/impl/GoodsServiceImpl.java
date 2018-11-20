@@ -25,7 +25,13 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public Integer addGoods(Goods goods) {
-        return goodsDao.addGoods(goods);
+    public Goods addGoods(Goods goods) {
+        goodsDao.addGoods(goods);
+        return goods;
+    }
+
+    @Override
+    public List<Goods> queryNewGoods() {
+        return goodsDao.queryNewGoods();
     }
 }
