@@ -64,8 +64,13 @@ public class GoodsController {
         //获取主键回填后的goods对象
         goods = goodsService.addGoods(goods);
 
+        String json = new Gson().toJson(goods);
+
         //模拟http请求发送数据  将记录同步到索引库
-        HttpClientUtils.sendJson("http://localhost:8082/search/addIndex",new Gson().toJson(goods));
+        HttpClientUtils.sendJson("http://localhost:8082/search/addIndex",json);
+        //生成静态页面
+        HttpClientUtils.sendJson("http://localhost:8083/item/createhtml",json);
+
 
         return "redirect:/goods/list";
     }

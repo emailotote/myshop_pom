@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="mypage" class="pagination">
+    <ul><li th:if="${goodsPage.currPage == 1}"><span>首页</span></li>
+        <li th:unless="${goodsPage.currPage == 1}"><span><a th:href="${'/search/list?keyWord=' + (keyWord ==null or keyWord == ''? '*:*':keyWord) + '&currPage=1'}">首页</a></span></li>
+
+        <li th:if="${goodsPage.currPage == 1}"><span>上一页</span></li>
+        <li th:unless="${goodsPage.currPage == 1}"><span><a th:href="${'/search/list?keyWord=' + (keyWord ==null or keyWord == ''? '*:*':keyWord) + '&currPage=' + (goodsPage.currPage - 1)}">上一页</a></span></li>
+
+        <li th:each="index: ${goodsPage.indexs}">
+                    <span class="currentpage">
+                        <a th:text="${index}" th:href="${'/search/list?keyWord=' + (keyWord ==null or keyWord == ''? '*:*':keyWord) + '&currPage=' + index}"></a>
+                    </span>
+        </li>
+
+        <li th:if="${goodsPage.currPage==goodsPage.pageSum}"><span>下一页</span></li>
+        <li th:unless="${goodsPage.currPage==goodsPage.pageSum}"><span><a th:href="${'/search/list?keyWord=' + (keyWord ==null or keyWord == ''? '*:*':keyWord) + '&currPage=' + (goodsPage.currPage + 1)}">下一页</a></span></li>
+
+        <li th:if="${goodsPage.currPage==goodsPage.pageSum}"><span>末页</span></li>
+        <li th:unless="${goodsPage.currPage==goodsPage.pageSum}"><span><a th:href="${'/search/list?keyWord=' + (keyWord ==null or keyWord == ''? '*:*':keyWord) + '&currPage=' + goodsPage.pageSum }" >末页</a></span></li>
+
+    </ul>
+</div>
+</body>
+</html>

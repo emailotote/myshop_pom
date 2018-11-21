@@ -1,8 +1,7 @@
 package cn.otote.shop.service;
 
 import cn.otote.shop.entity.Goods;
-
-import java.util.List;
+import cn.otote.shop.entity.SolrPage;
 
 /**
  * @author otote
@@ -22,5 +21,5 @@ public interface ISearchService {
      * @param keyWord
      * @return
      */
-    List<Goods> search(String keyWord);
+    SolrPage<Goods> search(String keyWord, SolrPage<Goods> page);
 }

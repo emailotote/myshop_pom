@@ -6,3 +6,10 @@ dubbo:
   registry:
     address: zookeeper://192.168.152.133:2181
     timeout: 2000
+  consumer:
+    check: false
+
+
+#  图片路径前缀
+image:
+  path: http://192.168.152.133/

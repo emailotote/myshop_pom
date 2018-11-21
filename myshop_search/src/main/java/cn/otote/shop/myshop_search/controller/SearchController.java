@@ -1,10 +1,12 @@
 package cn.otote.shop.myshop_search.controller;
 
 import cn.otote.shop.entity.Goods;
+import cn.otote.shop.entity.SolrPage;
 import cn.otote.shop.service.ISearchService;
 import com.alibaba.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,11 +22,19 @@ public class SearchController {
     @Reference
     private ISearchService searchService;
 
+    @Value("${image.path}")
+    private String path;
 
-    @RequestMapping("/list/{keyWord}")
-    public String searchByKeyWord(@PathVariable String keyWord){
+    @RequestMapping("/list")
+    public String searchByKeyWord(String keyWord, Model model,SolrPage<Goods> page){
+        SolrPage<Goods> goodsPage = searchService.search(keyWord, page);
 
-        return "";
+        model.addAttribute("goodsPage",goodsPage);
+        model.addAttribute("path",path);//图片访问路径
+        model.addAttribute("keyWord",keyWord);
+
+
+        return "searchlist";
     }
 
 
