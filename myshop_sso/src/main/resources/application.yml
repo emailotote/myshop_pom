@@ -1,0 +1,18 @@
+server:
+  port: 8084
+logging:
+  level:
+    cn.otote.shop.myshop_sso: debug
+dubbo:
+  application:
+    name: myshop_sso
+  registry:
+    address: zookeeper://192.168.152.133:2181
+  consumer:
+    check: false
+spring:
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.152.133
+    password: 123456

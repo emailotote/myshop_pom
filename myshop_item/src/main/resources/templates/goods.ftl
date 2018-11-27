@@ -12,6 +12,10 @@
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_goods.js" ></script>
+
+    <!--引入登录的js文件-->
+    <script type="text/javascript" src="http://localhost:8084/js/login.js"></script>
+
 </head>
 <body>
 	<!-- Header  -wll-2013/03/24 -->
@@ -20,8 +24,7 @@
 		<div class="shop_hd_topNav">
 			<div class="shop_hd_topNav_all">
 				<!-- Header TopNav Left -->
-				<div class="shop_hd_topNav_all_left">
-					<p>您好，欢迎来到<b><a href="/">ShoopNC商城</a></b>[<a href="">登录</a>][<a href="">注册</a>]</p>
+				<div id="login_info" class="shop_hd_topNav_all_left">
 				</div>
 				<!-- Header TopNav Left End -->
 
