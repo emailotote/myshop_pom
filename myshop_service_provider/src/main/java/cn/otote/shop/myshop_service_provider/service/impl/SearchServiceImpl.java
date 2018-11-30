@@ -23,7 +23,7 @@ import java.util.Map;
  * Created on 2018/11/20 17:52.
  */
 @Service
-public class ISearchServiceImpl implements ISearchService {
+public class SearchServiceImpl implements ISearchService {
 
     @Autowired
     private SolrClient solrClient;

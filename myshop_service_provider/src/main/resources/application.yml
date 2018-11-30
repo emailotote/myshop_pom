@@ -10,6 +10,9 @@ spring:
   data:
     solr:
       host: http://192.168.152.133:8080/solr
+  redis:
+    host: 192.168.152.133
+    password: 123456
 
 mybatis:
   mapper-locations: classpath*:cn/otote/shop/dao/mapper/*.xml

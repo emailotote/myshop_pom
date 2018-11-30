@@ -7,4 +7,6 @@ package cn.otote.shop.util;
 public interface Constact {
 
     String LOGIN_TOKEN = "login_token";
+
+    String SHOPCART_TOKEN="shopcart_token";
 }

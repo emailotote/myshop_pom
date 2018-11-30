@@ -10,6 +10,10 @@
         select * from goods order by id desc limit 4
     </select>
 
+    <select id="queryGoodsById" resultType="cn.otote.shop.entity.Goods">
+      select * from goods where id=#{id}
+    </select>
+
     <insert id="addGoods" useGeneratedKeys="true" keyProperty="id">
         insert into goods values(null ,#{title},#{ginfo},#{gcount},#{tid},#{allprice},#{price},#{gimage})
     </insert>

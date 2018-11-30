@@ -99,8 +99,9 @@ public class LoginAop {
 
         for (int i = 0; i < args.length; i++) {
             //将user的值赋给目标方法的参数
-            if (args[i].getClass()==User.class){
+            if (args[i]!= null && args[i].getClass()==User.class){
                 args[i]=user;
+                break;
             }
         }
 

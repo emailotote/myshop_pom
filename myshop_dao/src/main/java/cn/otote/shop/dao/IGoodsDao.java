@@ -16,4 +16,5 @@ public interface IGoodsDao {
 
     List<Goods> queryNewGoods();
 
+    Goods queryGoodsById(Integer id);
 }

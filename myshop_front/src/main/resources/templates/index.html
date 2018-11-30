@@ -31,6 +31,26 @@
 
 
 
+        $(function () {
+            $.ajax({
+                url:"http://localhost:8085/cart/list",
+                dataType:"jsonp"
+            })
+        })
+
+        function showShopCarts(data) {
+            $("#shopcart_number").html("购物车<b>"+data.length+"</b>种商品<i></i>")
+            $("#shopcart_id").html("<ul>")
+            for (var i = 0; i < data.length; i++) {
+                $("#shopcart_id").append("<li>")
+                $("#shopcart_id").append("<img style='width: 50px;' src='http://192.168.152.133/"+ data[i].goods.gimage+"'/><br/>");
+                $("#shopcart_id").append("<span>"+data[i].goods.title+"件</span>");
+                $("#shopcart_id").append("<span>*"+data[i].gnumber+"</span>")
+                $("#shopcart_id").append("</li>")
+            }
+            $("#shopcart_id").append("</ul>")
+
+        }
 
     </script>
 </head>
@@ -57,6 +77,7 @@
                                     <li><a title="已买到的商品" target="_top" href="#">已买到的商品</a></li>
                                     <li><a title="个人主页" target="_top" href="#">个人主页</a></li>
                                     <li><a title="我的好友" target="_top" href="#">我的好友</a></li>
+                                    <li><a title="我的订单" target="_top" href="http://localhost:8086/order/list">我的订单</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -75,8 +96,8 @@
 
                     <li>
                         <div class="topNav_menu">
-                            <a href="#" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
-                            <div class="topNav_menu_bd" style="display:none;">
+                            <a id="shopcart_number" href="http://localhost:8085/cart/showlist" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
+                            <div id="shopcart_id" class="topNav_menu_bd" style="display:none;">
                                 <!--
                                 <ul>
                                   <li><a title="已售出的商品" target="_top" href="#">已售出的商品</a></li>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.otote.shop.dao.IShopCartDao" >
+
+    <resultMap id="BaseResultMap" type="cn.otote.shop.entity.ShopCart">
+        <id property="id" column="id"/>
+        <result property="gid" column="gid"/>
+        <result property="gnumber" column="gnumber"/>
+        <result property="uid" column="uid"/>
+
+        <association property="goods" javaType="cn.otote.shop.entity.Goods">
+            <id property="id" column="gid"/>
+            <result property="title" column="title"/>
+            <result property="ginfo" column="ginfo"/>
+            <result property="gimage" column="gimage"/>
+            <result property="tid" column="tid"/>
+            <result property="gcount" column="gcount"/>
+            <result property="price" column="price"/>
+        </association>
+
+    </resultMap>
+
+    <insert id="addShopCart" useGeneratedKeys="true" keyProperty="id">
+        insert into shopcart values (null ,#{uid},#{gid},#{gnumber},#{money})
+    </insert>
+    <delete id="deleteCartsByIds">
+        delete from shopcart where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+          #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryCartsByUid" resultMap="BaseResultMap">
+        SELECT sc.*,g.* from shopcart sc join goods g on sc.gid=g.id WHERE sc.uid=#{uid}
+    </select>
+    <select id="quertCartsByIds" resultMap="BaseResultMap">
+        SELECT * from shopcart sc join goods g on sc.gid=g.id where sc.id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

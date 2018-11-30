@@ -1,11 +1,16 @@
 package cn.otote.shop.entity;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * @author otote
  * Created on 2018/11/27 19:39.
  * 购物车
  */
-public class ShopCart {
+public class ShopCart implements Serializable {
+
+    private Integer id;
 
     private Integer gid;
 
@@ -15,14 +20,26 @@ public class ShopCart {
 
     private Goods goods;
 
+    private Integer uid;
+
     @Override
     public String toString() {
         return "ShopCart{" +
-                "gid=" + gid +
+                "id=" + id +
+                ", gid=" + gid +
                 ", gnumber=" + gnumber +
                 ", money=" + money +
                 ", goods=" + goods +
+                ", uid=" + uid +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getGid() {
@@ -53,7 +70,19 @@ public class ShopCart {
         return goods;
     }
 
+
     public void setGoods(Goods goods) {
         this.goods = goods;
+        BigDecimal price =BigDecimal.valueOf(goods.getPrice());
+        BigDecimal number =BigDecimal.valueOf(getGnumber());
+        this.setMoney(price.multiply(number).doubleValue());
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 }
